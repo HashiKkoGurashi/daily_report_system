@@ -46,7 +46,7 @@ public abstract class ActionBase {
             //commandに該当するメソッドを実行
             //(例: action=Employee command=show の場合 EmployeeActionクラスのshow()メソッドを実行する)
             commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
-            commandMethod.invoke(command, new Object[0]);
+            commandMethod.invoke(this, new Object[0]);
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NullPointerException e) {
             //commandの値が不正で実行できない場合の処理
 
