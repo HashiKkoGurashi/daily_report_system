@@ -128,7 +128,7 @@ public abstract class ActionBase {
         try {
             number = Integer.parseUnsignedInt(strNumber);
         } catch(Exception e) {
-            number = Integer.MAX_VALUE;
+            number = Integer.MIN_VALUE;
         }
 
         return number;
