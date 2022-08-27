@@ -91,7 +91,7 @@ public abstract class ActionBase {
     protected boolean checkToken() throws ServletException, IOException {
         //パラメータからtokenの値を取得
         String _token = request.getParameter(AttributeConst.TOKEN.getValue());
-        if ( _token != null || _token.equals(getTokenId())) {
+        if ( _token != null && _token.equals(getTokenId())) {
             //tokenが設定されており、かつ、セッションIDと一致した場合にはtrueを返す
             return true;
         } else {
