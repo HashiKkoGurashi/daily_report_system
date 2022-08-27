@@ -9,10 +9,10 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:10022/daily_report_system"/>
-            <property name="javax.persistence.jdbc.user" value="admin_6"/>
-            <property name="javax.persistence.jdbc.password" value="RepoListPass"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/daily_report_system?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+            <property name="javax.persistence.jdbc.user" value="repuser"/>
+            <property name="javax.persistence.jdbc.password" value="reppass"/>
         </properties>
     </persistence-unit>
 </persistence>
