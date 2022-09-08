@@ -29,6 +29,16 @@
 <textarea name="${AttributeConst.REP_CONTENT.getValue()}" id="${AttributeConst.REP_CONTENT.getValue()}" rows="10" cols="50">${report.content}</textarea>
 <br /><br />
 
+<fmt:parseDate value="${report.attendAt}" pattern="HH:mm:ss" type="time" var="attendAt" />
+<label for="${AttributeConst.REP_ATTEND.getValue()}">出勤時間</label><br />
+<input type="time" value="<fmt:formatDate value='${attendAt}' pattern='HH:mm:ss' />" step="1" name="${AttributeConst.REP_ATTEND.getValue()}" id="${AttributeConst.REP_ATTEND.getValue()}" />
+<br /><br />
+
+<fmt:parseDate value="${report.leaveAt}" pattern="HH:mm:ss" type="time" var="leaveAt" />
+<label for="${AttributeConst.REP_LEAVE.getValue()}">退社時間</label><br />
+<input type="time" value="<fmt:formatDate value='${leaveAt}' pattern='HH:mm:ss' />" step="1" name="${AttributeConst.REP_LEAVE.getValue()}" id="${AttributeConst.REP_LEAVE.getValue()}" />
+<br /><br />
+
 <input type="hidden" name="${AttributeConst.REP_ID.getValue()}" value="${report.id}" />
 <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
 

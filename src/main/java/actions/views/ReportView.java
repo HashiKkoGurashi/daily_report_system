@@ -1,5 +1,6 @@
 package actions.views;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -28,5 +29,9 @@ public class ReportView {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    private Time attendAt;
+
+    private Time leaveAt;
 
 }

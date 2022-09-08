@@ -1,6 +1,7 @@
 package actions;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -63,9 +64,12 @@ public class ReportAction extends ActionBase {
         putRequestScope(AttributeConst.TOKEN, getTokenId());
 
         //日報情報の空インスタンスに、日報の日付＝今日の日付を設定する
+        //同様に、出勤時間初期値（09:00:00）と退勤時間初期値（18:00:00）を設定
         //そのインスタンスをリクエストスコープにセット
         ReportView rv = new ReportView();
         rv.setReportDate(LocalDate.now());
+        rv.setAttendAt(Time.valueOf("09:00:00"));
+        rv.setLeaveAt(Time.valueOf("18:00:00"));
         putRequestScope(AttributeConst.REPORT, rv);
 
         //新規登録画面を表示
@@ -100,7 +104,9 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
-                    null);
+                    null,
+                    Time.valueOf(getRequestParam(AttributeConst.REP_ATTEND)),
+                    Time.valueOf(getRequestParam(AttributeConst.REP_LEAVE)));
 
             //日報情報登録
             List<String> errors = service.create(rv);
@@ -188,6 +194,8 @@ public class ReportAction extends ActionBase {
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+            rv.setAttendAt(Time.valueOf(getRequestParam(AttributeConst.REP_ATTEND)));
+            rv.setLeaveAt(Time.valueOf(getRequestParam(AttributeConst.REP_LEAVE)));
 
             //日報データを更新する
             List<String> errors = service.update(rv);
